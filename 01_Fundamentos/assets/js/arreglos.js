@@ -14,3 +14,4 @@ let arregloCosas=[
 ];
 // console.log(arregloCosas);
 console.log(arregloCosas[4][1]); 
+//hola prueba de actualizar el archivo 
