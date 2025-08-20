@@ -5,3 +5,6 @@ alert('Hola Mundo');
 // console.log('Hola ' + nombre + '!'); 
 
 confirm('¿Estás seguro de que quieres continuar?');
+
+// vamkos a ver si funciona o que
+// alert('Hola Mundo');
