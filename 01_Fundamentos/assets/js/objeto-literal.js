@@ -27,3 +27,27 @@ const x= 'vivo';
 console.log('Vivo ',personaje[x]); //acceder a la propiedad vivo
 console.log('Vivo ',personaje.vivo); //acceder a la propiedad vivo  
 console.log('Ultima película ',personaje.ultimaPelícula); //acceder a la propiedad ultimaPelícula
+
+personaje.casado=true;//agregar propiedad
+
+//mas detalles
+delete personaje.edad; //eliminar propiedad
+console.log(personaje);
+
+
+const entriesPares=Object.entries(personaje); //convierte en arreglo
+console.log(entriesPares);
+
+Object.freeze(personaje); //congela el objeto, no se pueden agregar ni eliminar propiedades
+
+personaje.casado=100000000; //no se agrega
+personaje.direccion.ubicacion='Costa Rica'; //si se puede modificar propiedades internas    
+console.log(personaje);
+
+
+
+const propiedades=Object.getOwnPropertyNames(personaje); //obtiene las propiedades
+const valores=Object.values(personaje); //obtiene los valores
+// console.log(valores);
+// console.log(propiedades);
+console.log({propiedades, valores});
