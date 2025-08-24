@@ -36,4 +36,5 @@ const diasLetras={
     6:"Sabado"
 }
 
-console.log(diasLetras[dia])
+console.log(diasLetras[dia]|| "dia no definido");
+
