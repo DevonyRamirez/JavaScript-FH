@@ -32,3 +32,4 @@ const persona1= new Persona(nombre1,apellido1,pais1);
 const persona2=Persona.porObjeto(dev);
 
 persona1.getInfo();
+persona2.getInfo();
