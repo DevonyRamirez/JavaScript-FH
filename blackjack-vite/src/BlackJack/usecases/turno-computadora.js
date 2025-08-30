@@ -1,5 +1,5 @@
 
-import {pedirCarta,valorCarta} from './pedirCarta'
+import {pedirCarta,valorCarta, crearCartaHTML} from './pedir-carta'
 /**
  * 
  * @param {Number} puntosMinimos puntos minimos que la computadora necesita para ganar
@@ -23,9 +23,7 @@ export const turnoComputadora = ( puntosMinimos,puntosHTML, divCartasComputadora
         puntosComputadora = puntosComputadora + valorCarta( carta );
         puntosHTML.innerText = puntosComputadora;
         
-        const imgCarta = document.createElement('img');
-        imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
-        imgCarta.classList.add('carta');
+        const imgCarta = crearCartaHTML(carta);
         divCartasComputadora.append( imgCarta );
 
         if( puntosMinimos > 21 ) {
