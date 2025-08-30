@@ -1,5 +1,5 @@
 
-import {pedirCarta,valorCarta, crearCartaHTML} from './pedir-carta'
+import {pedirCarta,valorCarta, crearCartaHTML} from './'
 /**
  * 
  * @param {Number} puntosMinimos puntos minimos que la computadora necesita para ganar
