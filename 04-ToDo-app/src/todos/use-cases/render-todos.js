@@ -1,5 +1,8 @@
 import {Todo} from '../models/todo.model';
 import { createTodoElement } from './create-todo-html';
+
+let element;
+
 /**
  * 
  * @param {string} elementId 
@@ -9,9 +12,15 @@ import { createTodoElement } from './create-todo-html';
 
 export const renderTodos=(elementId, todos=[])=>{
 
-    const element=document.querySelector(elementId);
+    if(!element)
+        element=document.querySelector(elementId);
+
+    if(!element) throw new console.error(`element ${elementId} not found`);
+    
+    element.innerHTML='';
+
     todos.forEach(todo => {
         element.append(createTodoElement(todo))
-        
+
     });
 }
