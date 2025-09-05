@@ -1,11 +1,15 @@
 import html from './app.html?raw';
-import todoStore from '../store/todo.store'
-import { renderTodos } from './use-cases';
+import todoStore, { Filters } from '../store/todo.store'
+import { renderTodos, renderPending } from './use-cases';
+
+
 const ElementIDs={
     TodoList:'.todo-list',
     NewTodoInput:'#new-todo-input',
     DeleteElement:".destroy",
     ClearCompletedButton:".clear-completed",
+    todoFilters:".filtro",
+    PendingCountLabel:'#pending-count'
 }
 
 /**
@@ -21,8 +25,13 @@ export const App = ( elementId ) => {
     const displayTodos = () => {
         const todos = todoStore.getTodos( todoStore.getCurrentFilter() );
         renderTodos( ElementIDs.TodoList, todos );
+        updatePendingCount();
         }
 
+    const updatePendingCount = () => {
+        renderPending(ElementIDs.PendingCountLabel);
+
+    }
 
     // Cuando la función App() se llama
     (()=> {
@@ -37,7 +46,7 @@ export const App = ( elementId ) => {
     const todoListUL=document.querySelector(ElementIDs.TodoList)
     const destroylistUl=document.querySelector(ElementIDs.DeleteElement)
     const clearCompletedButton=document.querySelector(ElementIDs.ClearCompletedButton)
-
+    const filtros=document.querySelectorAll(ElementIDs.todoFilters)
 
     //listeners
 
@@ -70,7 +79,28 @@ export const App = ( elementId ) => {
         todoStore.deleteCompleted();
         displayTodos();
     });
+    
 
+    filtros.forEach(element=>{
+        element.addEventListener('click',(element)=>{
+            filtros.forEach(el=>el.classList.remove('selected'))
+            element.target.classList.add('selected')
+
+            switch (element.target.text) {
+                case 'Todos':
+                    todoStore.setFilter(Filters.All)
+                    break;
+                case 'Pendientes':
+                    todoStore.setFilter(Filters.Pending)
+                    break;
+                case 'Completados':
+                    todoStore.setFilter(Filters.Completed)
+                    break;
+            }
+
+            displayTodos();
+        })
+    })
 
 }
 

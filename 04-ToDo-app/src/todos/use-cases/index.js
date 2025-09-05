@@ -3,3 +3,5 @@ import { renderTodos } from "./render-todos"
 
 export {renderTodos} from "./render-todos"
 export {createTodoElement} from './create-todo-html'
+
+export { renderPending } from "./render-pending"
