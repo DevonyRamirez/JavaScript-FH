@@ -4,7 +4,8 @@ import { renderTodos } from './use-cases';
 const ElementIDs={
     TodoList:'.todo-list',
     NewTodoInput:'#new-todo-input',
-    DeleteElement:".destroy"
+    DeleteElement:".destroy",
+    ClearCompletedButton:".clear-completed",
 }
 
 /**
@@ -35,7 +36,7 @@ export const App = ( elementId ) => {
     const newDescriptionInput=document.querySelector(ElementIDs.NewTodoInput)
     const todoListUL=document.querySelector(ElementIDs.TodoList)
     const destroylistUl=document.querySelector(ElementIDs.DeleteElement)
-
+    const clearCompletedButton=document.querySelector(ElementIDs.ClearCompletedButton)
 
 
     //listeners
@@ -61,6 +62,12 @@ export const App = ( elementId ) => {
         if ( !element || !isDestroyElement ) return;
 
         todoStore.deleteTodo( element.getAttribute('data-id') );
+        displayTodos();
+    });
+
+
+    clearCompletedButton.addEventListener('click', () => {
+        todoStore.deleteCompleted();
         displayTodos();
     });
 
